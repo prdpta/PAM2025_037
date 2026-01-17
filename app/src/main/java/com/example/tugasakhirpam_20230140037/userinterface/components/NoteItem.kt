@@ -44,7 +44,6 @@ fun ItemCatatan(
                     overflow = TextOverflow.Ellipsis
                 )
 
-                // PERBAIKAN: Gunakan nama_kategori sesuai Models.kt
                 Text(
                     text = "Kategori: ${catatan.nama_kategori ?: "Umum"}",
                     style = MaterialTheme.typography.bodySmall,
@@ -53,7 +52,6 @@ fun ItemCatatan(
 
                 Spacer(modifier = Modifier.height(8.dp))
 
-                // PERBAIKAN: Gunakan isi sesuai Models.kt (atau isi_catatan jika itu yang kamu pakai)
                 Text(
                     text = catatan.isi,
                     style = MaterialTheme.typography.bodyMedium,
@@ -61,7 +59,6 @@ fun ItemCatatan(
                     overflow = TextOverflow.Ellipsis
                 )
 
-                // PERBAIKAN: Gunakan created_at sesuai Models.kt
                 catatan.created_at?.let {
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(
@@ -72,7 +69,6 @@ fun ItemCatatan(
                 }
             }
 
-            // Menu Dropdown (Titik Tiga)
             Box {
                 IconButton(onClick = { expanded = true }) {
                     Icon(Icons.Default.MoreVert, contentDescription = "Opsi")
