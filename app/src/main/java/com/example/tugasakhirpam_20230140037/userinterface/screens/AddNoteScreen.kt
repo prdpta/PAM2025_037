@@ -52,7 +52,6 @@ fun AddNoteScreen(navController: NavController, userId: Int) {
         }
     ) { innerPadding ->
         Column(modifier = Modifier.fillMaxSize().padding(innerPadding)) {
-            // Header Gradient
             Box(modifier = Modifier.fillMaxWidth().height(40.dp).background(
                 Brush.verticalGradient(listOf(primaryNavy, bgLight))
             ))
@@ -109,20 +108,16 @@ fun AddNoteScreen(navController: NavController, userId: Int) {
                             Toast.makeText(context, "Semua kolom harus diisi", Toast.LENGTH_SHORT).show()
                         } else {
                             isLoading = true
-
-                            // PERBAIKAN: Pastikan nama parameter (idUser, idKategori, judul, isi)
-                            // sesuai dengan yang ada di ApiService.kt
                             RetrofitClient.instance.addCatatan(
                                 idUser = userId,
                                 idKategori = 1,
                                 judul = judul,
-                                isi = isi // Pastikan di ApiService menggunakan nama 'isi', bukan 'isi_catatan'
+                                isi = isi
                             ).enqueue(object : Callback<ApiResponse> {
                                 override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
                                     isLoading = false
                                     if (response.isSuccessful && response.body()?.status == true) {
                                         Toast.makeText(context, "Berhasil disimpan", Toast.LENGTH_SHORT).show()
-                                        // Kembali ke halaman list agar data di-refresh
                                         navController.popBackStack()
                                     } else {
                                         val errorMsg = response.body()?.message ?: "Gagal menyimpan"

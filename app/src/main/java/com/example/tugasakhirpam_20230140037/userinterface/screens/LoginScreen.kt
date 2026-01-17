@@ -67,7 +67,6 @@ fun LoginScreen(navController: NavController) {
             colors = CardDefaults.cardColors(containerColor = Color.White)
         ) {
             Column(modifier = Modifier.padding(24.dp)) {
-                // Username Input
                 OutlinedTextField(
                     value = username,
                     onValueChange = { username = it },
@@ -80,7 +79,6 @@ fun LoginScreen(navController: NavController) {
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                // Password Input
                 OutlinedTextField(
                     value = password,
                     onValueChange = { password = it },
@@ -99,7 +97,6 @@ fun LoginScreen(navController: NavController) {
 
                 Spacer(modifier = Modifier.height(32.dp))
 
-                // Login Button
                 Button(
                     onClick = {
                         if (username.isBlank() || password.isBlank()) {

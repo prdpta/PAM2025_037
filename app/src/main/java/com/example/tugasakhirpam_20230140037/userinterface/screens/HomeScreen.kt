@@ -42,7 +42,6 @@ fun HomeScreen(navController: NavController, userId: Int) {
     val accentBlue = Color(0xFF4A90E2)
     val bgLight = Color(0xFFF4F7FA)
 
-    // Fungsi Load Data
     fun loadData() {
         isLoading = true
         RetrofitClient.instance.getCatatan(userId).enqueue(object : Callback<List<CatatanResponse>> {
@@ -59,7 +58,6 @@ fun HomeScreen(navController: NavController, userId: Int) {
         })
     }
 
-    // Fungsi Hapus Catatan
     fun deleteNote(noteId: Int) {
         RetrofitClient.instance.deleteCatatan(noteId).enqueue(object : Callback<ApiResponse> {
             override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
@@ -90,14 +88,11 @@ fun HomeScreen(navController: NavController, userId: Int) {
             ) {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
-                    // PERBAIKAN: Menggunakan SpaceAround agar sisa 3 icon tersebar rapi
                     horizontalArrangement = Arrangement.SpaceAround,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    // 1. Menu Home
                     BottomNavItem(Icons.Default.Home, "Home", primaryNavy) { loadData() }
 
-                    // 2. Tombol Tambah (Tengah)
                     Box(
                         modifier = Modifier
                             .size(52.dp)
@@ -109,7 +104,6 @@ fun HomeScreen(navController: NavController, userId: Int) {
                         Icon(Icons.Default.Add, null, tint = Color.White, modifier = Modifier.size(28.dp))
                     }
 
-                    // 3. Menu Profil
                     BottomNavItem(Icons.Default.Person, "Profil", Color.Gray) {
                         navController.navigate("profile/$userId")
                     }
@@ -204,7 +198,6 @@ fun HomeScreen(navController: NavController, userId: Int) {
     }
 }
 
-// --- Komponen Pendukung Tetap Sama ---
 
 @Composable
 fun ModernNoteCard(catatan: CatatanResponse, accent: Color, onEdit: () -> Unit, onDelete: () -> Unit) {

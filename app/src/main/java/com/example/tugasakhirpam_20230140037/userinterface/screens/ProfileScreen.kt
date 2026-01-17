@@ -24,7 +24,6 @@ import androidx.navigation.NavController
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProfileScreen(navController: NavController, userId: Int) {
-    // Data Statis sesuai permintaan
     val staticUsername = "Pradipta Pratama Putra"
     val staticEmail = "pratama.putra.ft23@mail.umy.ac.id"
     val staticId = "01"
@@ -54,7 +53,6 @@ fun ProfileScreen(navController: NavController, userId: Int) {
                 .background(bgLight)
                 .verticalScroll(scrollState)
         ) {
-            // 1. Background Header Gradient (Ditinggikan sedikit agar tidak kepotong)
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -62,7 +60,6 @@ fun ProfileScreen(navController: NavController, userId: Int) {
                     .background(Brush.verticalGradient(listOf(primaryNavy, accentBlue)))
             )
 
-            // 2. Konten Utama
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -71,7 +68,6 @@ fun ProfileScreen(navController: NavController, userId: Int) {
             ) {
                 Spacer(modifier = Modifier.height(30.dp))
 
-                // Foto Profil dengan Border Putih halus
                 Surface(
                     modifier = Modifier.size(110.dp),
                     shape = CircleShape,
@@ -98,7 +94,6 @@ fun ProfileScreen(navController: NavController, userId: Int) {
 
                 Spacer(modifier = Modifier.height(25.dp))
 
-                // Card Informasi Akun
                 Card(
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(24.dp),
@@ -126,7 +121,6 @@ fun ProfileScreen(navController: NavController, userId: Int) {
 
                 Spacer(modifier = Modifier.height(40.dp))
 
-                // Tombol Logout
                 Button(
                     onClick = {
                         navController.navigate("login") { popUpTo(0) { inclusive = true } }

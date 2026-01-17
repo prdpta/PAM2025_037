@@ -36,12 +36,10 @@ fun EditNoteScreen(navController: NavController, noteId: Int) {
     var isSaving by remember { mutableStateOf(false) }
     val context = LocalContext.current
 
-    // Definisi Warna Tema (Konsisten dengan Home/Profil)
     val primaryNavy = Color(0xFF1B3A57)
     val accentBlue = Color(0xFF4A90E2)
     val bgLight = Color(0xFFF4F7FA)
 
-    // 1. Ambil data catatan lama
     LaunchedEffect(Unit) {
         RetrofitClient.instance.getCatatanById(noteId).enqueue(object : Callback<CatatanResponse> {
             override fun onResponse(call: Call<CatatanResponse>, response: Response<CatatanResponse>) {
@@ -82,7 +80,6 @@ fun EditNoteScreen(navController: NavController, noteId: Int) {
                 .fillMaxSize()
                 .padding(padding)
         ) {
-            // --- Header Background Gradient ---
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -100,9 +97,8 @@ fun EditNoteScreen(navController: NavController, noteId: Int) {
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(horizontal = 24.dp)
-                        .offset(y = (-40).dp) // Mengangkat card agar menimpa background
+                        .offset(y = (-40).dp)
                 ) {
-                    // --- Card Input ---
                     Card(
                         modifier = Modifier.fillMaxWidth(),
                         shape = RoundedCornerShape(24.dp),
@@ -118,7 +114,6 @@ fun EditNoteScreen(navController: NavController, noteId: Int) {
                                 modifier = Modifier.padding(bottom = 16.dp)
                             )
 
-                            // Input Judul
                             OutlinedTextField(
                                 value = judul,
                                 onValueChange = { judul = it },
@@ -135,7 +130,6 @@ fun EditNoteScreen(navController: NavController, noteId: Int) {
 
                             Spacer(modifier = Modifier.height(16.dp))
 
-                            // Input Isi
                             OutlinedTextField(
                                 value = isi,
                                 onValueChange = { isi = it },
@@ -145,7 +139,7 @@ fun EditNoteScreen(navController: NavController, noteId: Int) {
                                         Icons.Default.Description,
                                         null,
                                         tint = accentBlue,
-                                        modifier = Modifier.padding(bottom = 120.dp) // Mengatur ikon ke atas
+                                        modifier = Modifier.padding(bottom = 120.dp)
                                     )
                                 },
                                 modifier = Modifier
@@ -162,7 +156,6 @@ fun EditNoteScreen(navController: NavController, noteId: Int) {
 
                     Spacer(modifier = Modifier.height(32.dp))
 
-                    // --- Tombol Simpan ---
                     Button(
                         modifier = Modifier
                             .fillMaxWidth()
