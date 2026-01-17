@@ -18,7 +18,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             TugasAkhirPAM_20230140037Theme {
-                // Menjalankan Navigasi Utama
                 AppNavigation()
             }
         }
@@ -33,12 +32,10 @@ fun AppNavigation() {
         navController = navController,
         startDestination = "login"
     ) {
-        // 1. Layar Login
         composable("login") {
             LoginScreen(navController = navController)
         }
 
-        // 2. Layar Home - Mengirimkan userId hasil login
         composable(
             route = "home/{userId}",
             arguments = listOf(navArgument("userId") { type = NavType.IntType })
@@ -47,7 +44,6 @@ fun AppNavigation() {
             HomeScreen(navController = navController, userId = userId)
         }
 
-        // 3. Layar Profile
         composable(
             route = "profile/{userId}",
             arguments = listOf(navArgument("userId") { type = NavType.IntType })
@@ -57,7 +53,6 @@ fun AppNavigation() {
             ProfileScreen(navController = navController, userId = userId)
         }
 
-        // 4. Layar Tambah Catatan
         composable(
             route = "add_note/{userId}",
             arguments = listOf(navArgument("userId") { type = NavType.IntType })
@@ -66,7 +61,6 @@ fun AppNavigation() {
             AddNoteScreen(navController = navController, userId = userId)
         }
 
-        // 5. Layar Edit Catatan - Menggunakan noteId untuk ambil data spesifik
         composable(
             route = "edit_note/{noteId}",
             arguments = listOf(navArgument("noteId") { type = NavType.IntType })
