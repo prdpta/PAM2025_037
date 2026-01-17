@@ -11,6 +11,4 @@ class CatatanRepository {
     fun getCatatan(userId: Int): Call<List<CatatanResponse>> = apiService.getCatatan(userId)
 
     fun deleteCatatan(id: Int): Call<ApiResponse> = apiService.deleteCatatan(id)
-
-    // Tambahkan fungsi lain jika diperlukan untuk Add/Edit
 }
